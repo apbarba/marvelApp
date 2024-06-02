@@ -1,0 +1,101 @@
+<div class="w-full">
+    <!-- ESTO ES EL CONTENIDO DEL TITULO -->
+    <section class="bg-gray-100 dark:bg-gray-800 py-12 md:py-20 lg:py-24">
+      <div class="container mx-auto px-4 md:px-6">
+        <div class="text-center space-y-4">
+          <h1 class="text-3xl md:text-4xl  text-white lg:text-5xl font-bold tracking-tight">Marvel Cinematic Universe</h1>
+          <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+            Explore the diverse cast of characters that make up the Marvel Cinematic Universe, from iconic superheroes
+            to complex anti-heroes.
+          </p>
+        </div>
+      </div>
+    </section>
+  
+    <div class="container mx-auto py-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div *ngFor="let character of characters" class="card bg-gray-800 text-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+            <img 
+              [src]="character.thumbnail.path + '.' + character.thumbnail.extension" 
+              alt="{{ character.name }}" 
+              class="w-full h-48 object-cover mb-4 rounded-lg"
+            />
+            <h3 class="text-xl font-semibold text-white dark:text-white mb-2">{{ character.name }}</h3>
+            <button 
+              (click)="getCharacterDetails(character.id)" 
+              class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+
+          <!-- Botón de carga de los personajes-->
+    <div class="text-center py-4">
+        <button (click)="loadMoreCharacters()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" [disabled]="isLoading">
+          {{ isLoading ? 'Loading...' : 'Load More Characters' }}
+        </button>
+      </div>
+      
+      <div *ngIf="selectedCharacter" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg max-w-2xl w-full shadow-lg overflow-y-auto max-h-3/4">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">{{ selectedCharacter.name }}</h2>
+            <button (click)="closeDetails()" class="text-red-500 hover:text-red-700 focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M14.293 5.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414L10 8.586l4.293-4.293z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+          <hr class="my-2 border-gray-300 dark:border-gray-700">
+          <div>
+            <img 
+              [src]="selectedCharacter.thumbnail.path + '.' + selectedCharacter.thumbnail.extension"
+              alt="Character Image"
+              class="w-full h-auto rounded-lg mb-6"
+            />
+            <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">{{ selectedCharacter.description }}</p>
+            <div *ngIf="selectedCharacter.comics.items.length > 0" class="mb-4">
+              <p class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Comics:</p>
+              <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300">
+                <li *ngFor="let comic of selectedCharacter.comics.items">{{ comic.name }}</li>
+              </ul>
+            </div>
+            <div *ngIf="selectedCharacter.series.items.length > 0" class="mb-4">
+              <p class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Series:</p>
+              <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300">
+                <li *ngFor="let series of selectedCharacter.series.items">{{ series.name }}</li>
+              </ul>
+            </div>
+            <div *ngIf="selectedCharacter.stories.items.length > 0" class="mb-4">
+              <p class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Stories:</p>
+              <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300">
+                <li *ngFor="let story of selectedCharacter.stories.items">{{ story.name }}</li>
+              </ul>
+            </div>
+            <div *ngIf="selectedCharacter.events.items.length > 0" class="mb-4">
+              <p class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Events:</p>
+              <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300">
+                <li *ngFor="let event of selectedCharacter.events.items">{{ event.name }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+

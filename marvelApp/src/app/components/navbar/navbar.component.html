@@ -1,0 +1,48 @@
+<div class="flex flex-col min-h-screen bg-gradient-to-br from-black-700 to-black-700 text-gray-50">
+    <header class="px-4 lg:px-6 h-14 flex items-center bg-black/90 backdrop-blur-sm">
+      <a class="flex items-center justify-center" href="#">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-6 w-6 text-red-500"
+          
+        >
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          <circle cx="12" cy="12" r="4"></circle>
+        </svg>
+        <span class="sr-only">Marvel Universe</span>
+      </a>
+      <nav class="ml-auto flex gap-4 sm:gap-6">
+        <button class="text-sm font-medium hover:underline underline-offset-4 text-white" [routerLink]="'/characters'">
+          Characters
+        </button>
+        <a class="text-sm font-medium hover:underline underline-offset-4 text-white" [routerLink]="'/shows'">
+          TV Shows
+        </a>
+        <a class="text-sm font-medium hover:underline underline-offset-4 text-white" [routerLink]="'/movies'">
+          Movies
+        </a>
+        <a class="text-sm font-medium hover:underline underline-offset-4 text-white" [routerLink]="'/events'">
+          Events
+        </a>
+        <a class="text-sm font-medium hover:underline underline-offset-4 text-white" [routerLink]="'/series'">
+          Series
+        </a>
+        <a class="text-sm font-medium hover:underline underline-offset-4 text-white" [routerLink]="'/stories'">
+          Stories
+        </a>
+        <a class="text-sm font-medium hover:underline underline-offset-4 text-white" [routerLink]="'/comics'">
+          Comics
+        </a>
+      </nav>
+    </header>
+    <router-outlet></router-outlet>
+  </div>
+  
