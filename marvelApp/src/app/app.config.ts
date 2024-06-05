@@ -9,6 +9,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withComponentInputBinding(), withPreloading(PreloadAllModules)), 
     provideClientHydration(),
-    provideHttpClient()
+    provideHttpClient(),
+    
   ]
 };
