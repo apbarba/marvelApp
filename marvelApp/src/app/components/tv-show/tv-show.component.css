@@ -1,0 +1,38 @@
+/* series-component.component.css */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .series-card {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .series-card.expanded {
+    grid-column: span 4;
+    z-index: 10;
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .series-card .relative {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .series-card .relative.expanded {
+    transform: none;
+  }
+  
+  .series-card .relative.expanded .absolute.bottom-0 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .group:hover .series-card .relative {
+    transform: none;
+  }
+  
+  .group:hover .series-card .relative .absolute.bottom-0 {
+    opacity: 0;
+  }
+  

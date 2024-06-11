@@ -1,0 +1,45 @@
+<div class="flex flex-col min-h-[100dvh]">
+
+    <!-- ESTO ES EL CONTENIDO DEL TITULO -->
+    <section class="bg-gray-100 dark:bg-gray-800 py-12 md:py-20 lg:py-24">
+        <div class="container mx-auto px-4 md:px-6 text-center space-y-4">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">Marvel Cinematic Universe</h1>
+          <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+            Explore the diverse cast of series that make up the Marvel Cinematic Universe
+          </p>
+        </div>
+    </section>
+
+    <!-- ESTO ES EL CONTENIDO DE LAS SERIES -->
+    <section class="py-12 md:py-20 lg:py-24">
+        <div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div *ngFor="let series of filteredSeries" class="relative overflow-hidden rounded-lg shadow-lg">
+            <img
+              [src]="series.thumbnail.path + '.' + series.thumbnail.extension"
+              alt="{{ series.title }}"
+              width="400"
+              height="600"
+              class="w-full h-[500px] object-cover transition-transform duration-300 cursor-pointer"
+              style="aspect-ratio: 400 / 600; object-fit: cover;"
+              (click)="toggleExpandedSeries(series)"
+            />
+            <h3 class="text-black text-lg font-bold mb-2">{{ series.title}}</h3>
+            <div
+              *ngIf="expandedSeries === series"
+              class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent px-4 py-6 text-white overflow-y-auto"
+            >
+              <h3 class="text-lg font-bold mb-2">{{ series.title }}</h3>
+              <p class="text-sm">{{ series.description }}</p>
+            </div>
+            <div
+              *ngIf="expandedSeries !== series"
+              class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent px-4 py-6 text-white transition-all duration-300 opacity-0"
+            >
+              <h3 class="text-lg font-bold mb-2">{{ series.title }}</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+</div>
